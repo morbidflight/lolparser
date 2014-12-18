@@ -8,6 +8,7 @@ Step 1: Get the UID of the first file, use that to look up the summonername (cli
 Step 2: For each file:
 Step 3: If the file does not contain an EXITCODE, do not parse.
 Step 4: Else, get champion name (only the first one in the file) corresponding to the summonername saved previously and update the counter for that champion.
+		Hero Ashe(0) created for morbidflight
 Step 5: Get EXITCODE corresponding to that file: EXITCODE_LOSE or EXITCODE_WIN
 
 Possibly also get summonernames of teammates (shared teamID), check for all summonername () with teamID same as source
