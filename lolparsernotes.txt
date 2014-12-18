@@ -1,0 +1,25 @@
+UID = clientID of the person creating the game
+
+If the game has EXITCODE that means it ended properly, not due to disconnect.
+Each time there is a soft disconnect/reconnect cycle, it re-spawns the hero (Hero .(* created for user).
+
+Step 1: Get the UID of the first file, use that to look up the summonername (clientID [0-9] and summonername (.*)): save what's between parens as summonername.
+		Spawning champion (Ahri) with skinID 0 on team 200 for clientID 9 and summonername (morbidflight) (is HUMAN PLAYER)
+Step 2: For each file:
+Step 3: If the file does not contain an EXITCODE, do not parse.
+Step 4: Else, get champion name (only the first one in the file) corresponding to the summonername saved previously and update the counter for that champion.
+Step 5: Get EXITCODE corresponding to that file: EXITCODE_LOSE or EXITCODE_WIN
+
+Possibly also get summonernames of teammates (shared teamID), check for all summonername () with teamID same as source
+
+
+name	Orig?	Champion name	Number of times played	Number of Wins	Number of Losses
+				Champion 2 name etc
+mf		True	DrMundo			239						120				119
+		True	Ahri			4						2				2
+		
+abz		False	DrMundo			3						2				1
+						
+						
+OK let's start with just me, and just champion name and number of times played
+So a Dict (Key = champname, Value = number of times played)
