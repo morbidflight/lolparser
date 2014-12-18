@@ -22,7 +22,7 @@ for f in os.listdir(filepath):
      # checks whether the log corresponds to an actual game that ended
      # and not to a disconnect (checks for EXITCODE_WIN or _LOSE)
      fullgame = exitcode.search(str)
-     # if it matches, get the champion name and update the dict
+     # if it's a full game then we can continue to see if played
      if fullgame:
           # working on identifying the person who created the logs
           # if the netUID is a single digit, then that person was in the game
@@ -30,7 +30,7 @@ for f in os.listdir(filepath):
           played = netUID.search(str)
           if played:
                # extracts the name of the person whose logs it is
-               # takes the first summoner name and then uses it to create a regex 
+               # takes first summoner name and then uses it to create a regex 
                if not summoner:
                     UID = played.group(1)
                     name = re.search(r'Spawning champion \((.*?)\) .+ clientID {} and summonername \((.+?)\)'.format(UID), str)
@@ -51,8 +51,11 @@ for f in os.listdir(filepath):
                borkcount += 1
      temp.close()
 
+commonlist = champstats.most_common()
+
 print 'Analyzing logs for {}.'.format(summoner)
 print 'You played {} games.'.format(gamecount)
 print 'You spectated {} games.'.format(speccount)
 print 'You broke {} games. Rito pls!'.format(borkcount)
-print champstats.most_common(3)
+for item in commonlist:
+     print '{}: {:d}'.format(item[0], item[1])
